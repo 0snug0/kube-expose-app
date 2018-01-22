@@ -1,0 +1,21 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: apiv2
+  labels:
+    app: apiv2-pod
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: apiv2-pod
+  template:
+    metadata:
+      labels:
+        app: apiv2-pod
+    spec:
+      containers:
+      - name: apiv2-pod
+        image: grc.io/plexikube/api-pod:v2
+        ports:
+        - containerPort: 5000

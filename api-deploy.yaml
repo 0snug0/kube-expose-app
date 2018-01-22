@@ -1,0 +1,21 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: api
+  labels:
+    app: api-pod
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: api-pod
+  template:
+    metadata:
+      labels:
+        app: api-pod
+    spec:
+      containers:
+      - name: api
+        image: gcr.io/plexikube/api:v1
+        ports:
+        - containerPort: 5000
